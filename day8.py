@@ -89,7 +89,20 @@ if len(password) >=8 and password[0].isalpha() :
         print("Password is not valid!")
 else:
     print("Password is not valid!")
-    
 
-        
-     
+
+#class explanation of username and password validation 
+s=input("Enter a string: ")
+validation_string="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890@_"
+if len(s)>=8:
+    if s[0].isupper() or s[0].islower():
+        for i in range(1,len(s)):
+            if s[i] not in validation_string:
+                print("Invalid String")
+                break
+        else:
+            print("Valid String")
+    else:
+        print("Invalid String")
+else:
+    print("Invalid String") 
