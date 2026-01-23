@@ -102,7 +102,6 @@ for num in lst:
 print("Even list: ",even_list)
 print("Odd list: ",odd_list)
  
- 
 #marks analyser
 #pass marks=35(+)
 #fail marks=35(-)
