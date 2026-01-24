@@ -48,7 +48,7 @@ print("Average marks of maths is",sum(maths)/10)
 print("Average marks of science is",sum(science)/10)
 print("Average marks of social is",sum(social)/10)
 print("Average marks of evs is",sum(evs)/10)
-print("Average marks of students is",sum(total_marks)/10)
+print("Average marks of students is",sum(total_marks)/10)"""
 
 #who is topper
 print("Welcome to the who is the topper")
@@ -83,7 +83,7 @@ for i in range(len(topper_pos)):
     print("Marks of the student is: ",marks[i])
 #each student marks
 for i in range(n):
-    print("Name of the student is: ",name[i],"and Marks is: ",marks[i])"""
+    print("Name of the student is: ",name[i],"and Marks is: ",marks[i])
     
     
 #find the smallest value in the list without using build in functions 
