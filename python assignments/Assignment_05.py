@@ -1,7 +1,7 @@
 ###Write a Python Program to Find LCM?
 ###Write a Python Program to Find HCF?
 ###Write a Python Program to Convert Decimal to Binary, Octal and Hexadecimal?
-###Write a Python Program To Find ASCII value of a character?
+###Write a Python Program To Find ASCII value of a character?****
 ###Write a Python Program to Make a Simple Calculator with 4 basic mathematical operations?
 
 
@@ -49,8 +49,19 @@ num1=int(input("Enter the first number: "))
 num2=int(input("Enter the value of second number: "))
 def find_hcf(a, b):
     smaller = min(a, b)
+    hcf = 1
     for i in range(1, smaller + 1):
         if a % i == 0 and b % i == 0:
             hcf = i
     return hcf
 print("HCF is:", find_hcf(num1, num2))
+
+###Write a Python Program to Convert Decimal to Binary, Octal and Hexadecimal?
+num = int(input("Enter a decimal number: "))
+binary = bin(num)
+octal = oct(num)
+hexadecimal = hex(num)
+print("Binary:", binary)
+print("Octal:", octal)
+print("Hexadecimal:", hexadecimal)
+
