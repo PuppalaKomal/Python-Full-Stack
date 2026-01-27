@@ -5,7 +5,7 @@
 # Write a Python Program for cube sum of first n natural numbers?
 
 # Write a Python Program to Display Fibonacci Sequence Using Recursion?
-"""n=int(input("Enter the number of terms: "))
+n=int(input("Enter the number of terms: "))
 a=0
 b=1
 print(a, end=" , ")
@@ -24,7 +24,7 @@ else:
     fact=1
     for i in range(1,n+1):
         fact=fact*i
-    print("The factorial of",n,"is",fact)"""
+    print("The factorial of",n,"is",fact)
     
 # Write a Python Program to calculate your Body Mass Index?
 height=float(input("Enter your height in meters: "))
@@ -50,3 +50,14 @@ elif gender=="female":
     else:
         print("Obesity")
     
+# Write a Python Program to calculate the natural logarithm of any number?
+import math
+n=int(input("Enter a number: "))
+print("The natural logarithm of",n,"is",math.log(n))
+
+# Write a Python Program for cube sum of first n natural numbers?
+n=int(input("Enter the number of terms: "))
+sum=0
+for i in range(1,n+1):
+    sum=sum+i**3
+print("The sum of cubes of first",n,"natural numbers is",sum)
