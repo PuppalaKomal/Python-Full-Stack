@@ -33,3 +33,12 @@ while n>0:
 print(s)
 
 # 4 armstrong number
+num = int(input("Enter a number: "))
+digits = len(str(num))
+result = 0
+for d in str(num):
+    result = result + (int(d) ** digits)
+if result == num:
+    print("Armstrong number")
+else:
+    print("Not an Armstrong number")
