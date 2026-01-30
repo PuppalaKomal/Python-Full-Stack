@@ -160,9 +160,5 @@ if __name__=="__main__":
             print("Thank you for using Phone Book App")
             break
         else:
-            print("Invalid choice")  # Added missing space after "Invalid"
+            print("Invalid choice")  
         
-
-
-
-
