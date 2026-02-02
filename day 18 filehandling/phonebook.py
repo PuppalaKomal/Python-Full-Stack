@@ -8,13 +8,14 @@ def add_contact(name:str,number:int):
     except :
         return "Error in add_contact"
     for contact in contact_lines:
-        contact_name, *contact_number=contact.split() 
+        contact_name, contact_number=contact.split() 
         if contact_name==name:
             return "Contact Already Exists"
     #add contact to file contacts
     try:
         with open("contacts.txt","a") as f:
             f.write(f"\n{name} {number}")
+            return "{name}'s contact has been updated"
     except :
         return "Error in add_contact" 
 no=99631246
@@ -22,13 +23,13 @@ name="koaml"
 print(add_contact(name,no))
             
 # #update mob number in ph_book
-# def update_number(name:str,number:int):
-#     if name in ph_book:
-#         ph_book[name]=number
-#         #ph_book.update({name:number})
-#         print(f"{name} Contact Number Successfully Updated")
-#     else:
-#         print(f"{name} Contact Not Found")
+def update_number(name:str,new_number:int):
+    if name in ph_book:
+        ph_book[name]=number
+        #ph_book.update({name:number})
+        print(f"{name} Contact Number Successfully Updated")
+    else:
+        print(f"{name} Contact Not Found")
 # #delete contact from ph_book
 # def delete_contact(name:str):
 #     if name in ph_book:
