@@ -151,10 +151,30 @@ class Admin(Person):
         else:
             return f"{bookid} does not exist."
     def borrow_book(self,userid,bookid):
-        pass
+        if userid in users:
+            if bookid in books:
+                if books[bookid]["quantity"]>0:
+                    books[bookid]["quantity"]-=1
+                    users[userid].borrowed_books.append(bookid)
+                    return f"{bookid} borrowed successfully."
+                else:
+                    return f"{bookid} is not available."
+            else:
+                return f"{bookid} does not exist."
+        else:
+            return f"{userid} does not exist."
     def return_book(self,userid,bookid):
-        pass
+        if userid in users:
+            if bookid in users[userid].borrowed_books:
+                books[bookid]["quantity"]+=1
+                users[userid].borrowed_books.remove(bookid)
+                return f"{bookid} returned successfully."
+            else:
+                return f"{bookid} not borrowed by {userid}."
+        else:
+            return f"{userid} does not exist."
     def all_book(self):
-        pass
+        return books
     def total_users(self):
-        pass
+        return users
+    
