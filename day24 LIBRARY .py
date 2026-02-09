@@ -1,4 +1,8 @@
 # Books and users
+from ast import main
+from day23 import User
+
+
 books = {
     1: ["Python Basics", "Guido van Rossum", 10],
     2: ["Learning Java", "James Gosling", 8],
@@ -111,7 +115,11 @@ books = {
     100: ["IT Governance", "Peter Weill", 4]
 }
 
-users={}
+users={
+    1001:{"name":"komal","books_id":[91,99,87]},
+    1002:{"name":"Dhanush","books_id":[92,100,86]},
+    1003:{"name":"Siri","books_id":[91,99,87]}
+}
 # Person Class
 class Person():
     # Constructor
@@ -137,44 +145,54 @@ class Admin(Person):
     #constructor
     def __init__(self,id:int,name:str):
         super().__init__(id,name)
-
     def add_Book(self,book_obj:Book,quantity:int):
         if book_obj.id not in books:
             books[book_obj.id]={"name":book_obj.name,"author":book_obj.author,"quantity":quantity}
             return f"{book_obj.name} added successfully."
         else:
             return f"{book_obj.name} already exists."
+    def add_user(self,user_obj:User):
+        if user_obj.id not in users:
+            users[user_obj.id]={"name":user_obj.name,"books_id":[]}
+            return f"{user_obj.name} added successfully."
+        else:
+            return f"{user_obj.name} already exists."
     def delete_book(self,bookid):
         if bookid in books:
-            del books[bookid]
+            books.pop(bookid)
             return f"{bookid} deleted successfully."
         else:
             return f"{bookid} does not exist."
-    def borrow_book(self,userid,bookid):
+    def borrow_book(self,userid,*bookids):
         if userid in users:
-            if bookid in books:
-                if books[bookid]["quantity"]>0:
-                    books[bookid]["quantity"]-=1
-                    users[userid].borrowed_books.append(bookid)
-                    return f"{bookid} borrowed successfully."
+            available_books=[]
+            unavailable_books=[]
+            for bookid in bookids:
+                if bookid in books:
+                    quantity=books[bookids][2]
+                    if quantity>0:
+                        books[bookid][2]-=1
+                        users[userid]["book_id"].append(bookid)
+                        available_books.append({bookid:books[bookid[0]]})
+                    else:
+                        unavailable_books.append({bookid:books[bookid[0]]})
                 else:
-                    return f"{bookid} is not available."
-            else:
-                return f"{bookid} does not exist."
-        else:
-            return f"{userid} does not exist."
-    def return_book(self,userid,bookid):
+                    unavailable_books.append({bookid:books[bookid[0]]})
+            return f"Availble books are : {available_books} and unavailable books are: {unavailable_books}"
+        return f"User not found"
+    def return_book(self,userid,*bookids):
         if userid in users:
-            if bookid in users[userid].borrowed_books:
-                books[bookid]["quantity"]+=1
-                users[userid].borrowed_books.remove(bookid)
-                return f"{bookid} returned successfully."
-            else:
-                return f"{bookid} not borrowed by {userid}."
-        else:
-            return f"{userid} does not exist."
+
+            for bookid in bookids:
+                if bookid in books and users[userid]['books_id']:
+
+                    books[bookid][2]+=1
+                    users[userid]["book_id"].remove(bookid)
+            return f"All books are returned successfully!" 
+        return f"User not found"
     def all_book(self):
         return books
     def total_users(self):
-        return users
-    
+        return len(users)
+if __name__ == "__main__":
+    pass
