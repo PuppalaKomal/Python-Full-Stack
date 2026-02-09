@@ -195,4 +195,49 @@ class Admin(Person):
     def total_users(self):
         return len(users)
 if __name__ == "__main__":
-    pass
+    print("Welcome to Library! ")
+    admin=Admin(1,"Suma")
+    while True:
+        print("Select Your Operations:\n 1. Add Book \n 2. Register User \n 3. Borrow Book \n 4. Return Book \n 5. Display All Books \n 6. Display Total Users \n 7. Delete book \n 8. Exit")
+        choice=int(input("Enter your choice: "))
+        if choice==1:
+            bookid=int(input("Enter book id: "))
+            book_name=input("Enter Book name: ")
+            book_author=input("Enter Author name: ")
+            stock=int(input("Enter book quantity: "))
+            book_object=Book(id=book_id,name=book_name,author=book_author) 
+            admin.add_Book(book_obj=book_object,quantity=stock)
+        if choice==2:
+            userid=int(input("Enter User Id: "))
+            username=input("Enter Username: ")
+            user_object=User(id=userid,name=username)
+            print(admin.add_user(user_obj=user_object))
+        elif choice==3:
+            print("You selected borrow book choose book of your desire")
+            userid=int(input("Enter User id: "))
+            book_ids=list(map(int,input("Enter book ids: ").split()))
+            print(admin.borrow_book(userid,*book_ids))
+        elif choice==4:
+            print("You selected return book choose book of your desire")
+            userid=int(input("Enter User id: "))
+            book_ids=list(map(int,input("Enter book ids: ").split()))
+            print(admin.return_book(userid,*book_ids))
+        elif choice==5:
+            print("You have chose to view the books available ")
+            print(f"book_id        |Book name:                  |,Author:         |,Quantity:       ")
+            all_books=admin.all_book()
+            for bookid,details in all_books.items():
+                print(f"Book id: {bookid} | Book name: {details[0]} | Author: {details[1]} |  Quantity: {details[2]}")
+            # print(admin.all_book())
+        elif choice==6:
+            print("Total users in library are:")
+            print(admin.total_users())
+        elif choice==7:
+            print("You have chose to delete a book")
+            bookid=int(input("Enter book id to delete book : "))
+            print(admin.delete_book(bookid=bookid))  
+        elif choice==8:
+            print("Thank you for using library management system")
+            break
+        else:
+            print("Invalid choice")
