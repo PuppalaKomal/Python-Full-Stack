@@ -26,7 +26,12 @@ class libraryServices():
             book_obj.is_available=False
             return f'Book is borrowed successfully'
         return "Book is not found"
-    def Return_book():
-        pass
-    def Get_avail_book():
-        pass
+    def Return_book(self,bookid:int):
+        if bookid in self.books:
+            book_obj=self.books[bookid]
+            book_obj.is_available=True
+            return f'Book is returned successfully'
+        return "Book is not found"
+        
+    def Get_avail_book(self):
+        return [book for book in self.books.values() if book.is_available]
