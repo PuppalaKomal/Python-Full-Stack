@@ -32,6 +32,10 @@ class libraryServices():
             book_obj.is_available=True
             return f'Book is returned successfully'
         return "Book is not found"
-        
     def Get_avail_book(self):
-        return [book for book in self.books.values() if book.is_available]
+        for book_id in self.book.keys():
+            book_obj=self.bookd[book_id]
+            if book_obj is available:
+                print(f"Book_id{book_obj.bookid} -Book Name:{book_obj.title} -Author name:{book_obj.author}")
+        print("Total Available Books:",count)
+        return True

@@ -17,4 +17,3 @@ class Book:
         book['author']=self.author
         book['is_available']=True
         return book
-        pass
