@@ -52,9 +52,6 @@
 #                 JUnit
 #                 TestNG
 #                 PyTest
-
-
-
 #squre of a number
 # def number_squre(x):
 #     return x*x
