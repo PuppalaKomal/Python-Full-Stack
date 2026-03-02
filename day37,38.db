@@ -1,0 +1,87 @@
+create database IT_company;
+
+use IT_company;
+
+create table dept(deptid int primary key, dept_name varchar(50) not null unique);
+
+create table employe(id int primary key auto_increment,
+					name varchar(50) not null,
+                    deptid int,
+                    salary int unsigned,
+                    foreign key(deptid) references dept(deptid));
+                    
+                    
+-- insert records into dept table
+insert into dept values(1001, 'it'), (1002, 'hr'), (1003, 'sales');
+-- insert into employe values(1, 'ram') ,(1001,40)
+insert into employe(name,deptid, salary) values('ram',1001,40),('raju',1001,45),('siva',1001,50),('sanju',1002,42),('sam',1003,39);
+insert into employe(name,deptid, salary) values('ram',1001,40);
+
+Day 38 2-3-26
+SELECT * FROM dept;
+select * from employe;
+
+-- Update
+
+
+-- SELECT IT EMPLOYEES FROM EMPLOYEE TABLE
+select * FROM employe
+where deptid = 1001;
+
+-- SELECT NON IT EMPLOYE
+select * FROM employe
+where deptid != 1001;
+
+select * from employe
+where deptid in (1002, 1003);
+-- SELECT HR AND SALES DEPT EMPLOYE
+select * from employe
+where deptid = 1002 or deptid = 1003;
+
+-- FIND EMPLOYE DETAILS THOSE HAVE MORE THAN 35000 SALARY
+select * from employe
+where salary > 35000;
+-- FIND EMPLOYE DETAILS THOSE HAVE LESS THAN 40000(INCLUDE) SALARY
+select * from employe
+where deptid = 1001 and salary > 40;
+-- FIND TOTAL EMPLOYE COUNT IN EMPLOYE table
+select COUNT(id) from employe;
+
+-- FIND THE TOTAL SALARY SEND ON EMPLOYEE EVERY MONTH
+select sum(salary) from employe;
+
+-- COUNT IT DEPT EMPLOYEE
+select count(id) from employe where deptid = it;
+
+-- COUNT NON IT DEPART
+select count(id) from employe where deptid = 1001;
+
+-- UPDATE SALARY 5000 FOR all EMPLOYES  
+UPDATE employe set salary= salary + 5000;
+
+set sql_safe_updates = 0;
+
+-- update 2000 for it employes
+UPDATE employe  set salary = salary + 2000
+where deptid = 1001;
+
+-- UPDATE RAM SALARY BY 3000
+update employe set salary = salary + 3000 where name = 'ram';
+
+-- DELETE 102 EMPLOYE FROM EMPLOY TABLE
+delete from employe 
+where empid = 102;
+
+select * from employe;
+
+-- find the employe details those name start with "s"
+select *from employe
+where name like 's%';
+
+-- find the employe details those name ends with "i"
+select *from employe
+where name like '%i';
+
+-- find the employe details those name ends with "i"
+select *from employe
+where name like '%a%';

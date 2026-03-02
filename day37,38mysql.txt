@@ -1,0 +1,90 @@
+Data = Data is a collection of raw facts and it doesnt give any meaning
+    1. Structured data
+    2. Unstructured data
+    3. Semi-structured data
+
+Information = converting data into strucyured format it gives some meaning
+
+Database = Storing data in a structured format in electronic manner
+
+Features of SQL:
+    Data security
+    Data backup 
+    Data redundancy
+    Data transformation
+    Data access
+
+Database Models:
+1. RDBMS(MySQL,Oracle,PostgreySQL,SQLite)
+2. No-SQL(MongoDB)
+3. Networkbase
+4. TimeSeries
+5. Cloud Database
+6.
+7.
+8.
+
+RDBMS:
+    data is stored in tabular format/ structured format 
+    Columns=Fields
+    Rows=Records
+
+SQL Commands/ SQL sublanguages
+    1. DDL: Data Definitation Language
+    2. DML: Data Manuplation Language
+    3. DQL: Data Query Language
+    4. DCL: Data Control Language
+    5. TCL: Transaction Control Language 
+
+    1. DDL:(OPERATIONS ON STRUCTURE)(auto-commited commands which means rollback is not possible)
+        1. CREATE: (create the table)
+        2. ALTER: (modify the table structure)
+        3. DROP: (delete the table)
+        4. TRUNCATE: (delete the entire table records)
+        5. RENAME: (renames the table)
+    2.DML:(RELATED TO TABLE)(not auto-commited commands ,rollback is possible)
+        1. INSERT: (inserts data into fields or records)
+        2. UPDATE: (updates the existing data)
+        3. DELETE: (deletes the data based on the condition)
+    3.DQL:()
+        1.SELECT: (to get a particular data)
+
+
+Day 38
+Table creation syntax
+    CREATE TABLE TABLE_NAME(
+        COLUMN_NAME DATATYPE,
+        COLUMN_NAME DATATYPE,
+    );
+
+DATATYPES:
+    1. NUMERICAL
+        Tiny int(1byte (or) 8 bits (or) 2^8 (or) 0 to 255)
+        Small int(2bytes (or) 16 bits (or) 2^16 (or) 0 to 65535 )
+        Medium int
+        int
+        Big int
+        Float 
+        Double/NUMERIC
+        Bit
+    2. DATE & Time
+        DATE
+        Time
+        date Time
+        time stamp
+        year
+    3. STRING
+        Char
+        Varchar
+        Text
+        binary
+        varbinary
+        blob
+        set
+        enum
+    4. SPECIAL DATA TYPE
+        Boolean
+        json
+
+
+
