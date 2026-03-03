@@ -88,3 +88,23 @@ DATATYPES:
 
 
 
+
+3-march-2026
+clauses
+    1. Where
+    2. Group By
+    3. Having
+    4. Order By
+
+    Group By syntax
+        SELECT Columns_name aggerate fun(col_name)from table_name
+            Group By col_name
+
+
+SELECT Columns_name from table_name
+where condition
+group by col_name
+Having aggerate_condition 
+order by col_name Asd/Des
+limit Row_count
+

@@ -2,13 +2,13 @@ create database IT_company;
 
 use IT_company;
 
-create table dept(deptid int primary key, dept_name varchar(50) not null unique);
+create table dept(dept_id int primary key, dept_name varchar(50) not null unique);
 
 create table employe(id int primary key auto_increment,
-					name varchar(50) not null,
-                    deptid int,
+					dept_name varchar(50) not null,
+                    dept_id int,
                     salary int unsigned,
-                    foreign key(deptid) references dept(deptid));
+                    foreign key(dept_id) references dept(dept_id));
                     
                     
 -- insert records into dept table
@@ -17,7 +17,7 @@ insert into dept values(1001, 'it'), (1002, 'hr'), (1003, 'sales');
 insert into employe(name,deptid, salary) values('ram',1001,40),('raju',1001,45),('siva',1001,50),('sanju',1002,42),('sam',1003,39);
 insert into employe(name,deptid, salary) values('ram',1001,40);
 
-Day 38 2-3-26
+--Day 38 2-3-26
 SELECT * FROM dept;
 select * from employe;
 
