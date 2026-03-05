@@ -1,78 +1,92 @@
-create database IT_company;
-use IT_company;
-create table dept(deptid int primary key, dept_name varchar(50) not null unique);
-create table employe(id int primary key auto_increment,
-					name varchar(50) not null,
-                    deptid int,
-                    salary int unsigned,
-                    foreign key(deptid) references dept(deptid));
--- insert records into dept table
-insert into dept values(1001, 'it'), (1002, 'hr'), (1003, 'sales');
--- insert into employe values(1, 'ram') ,(1001,40)
-insert into employe(name,deptid, salary) values('ram',1001,40000),('raju',1001,45000),('siva',1001,50000),('sanju',1002,42000),('sam',1003,39000);
-insert into employe(name,deptid, salary) values('ram',1001,40000);
-SELECT * FROM dept;
-select * from employe;
--- SELECT IT EMPLOYEES FROM EMPLOYEE TABLE
-select * FROM employe
-where deptid = 1001;
+#create it_company database
 
--- SELECT NON IT EMPLOYE
-select * FROM employe
-where deptid != 1001;
-select * from employe
-where deptid in (1002, 1003);
--- SELECT HR AND SALES DEPT EMPLOYE
-select * from employe
-where deptid = 1002 or deptid = 1003;
+-- DELETE OLD DATABASE (so no errors)
+DROP DATABASE IF EXISTS IT_COMPANY;
 
--- FIND EMPLOYE DETAILS THOSE HAVE MORE THAN 35000 SALARY
-select * from employe
-where salary > 35000;
--- FIND EMPLOYE DETAILS THOSE HAVE LESS THAN 40000(INCLUDE) SALARY
-select * from employe
-where deptid = 1001 and salary > 40;
--- FIND TOTAL EMPLOYE COUNT IN EMPLOYE table
-select COUNT(id) from employe;
+-- CREATE NEW DATABASE
+CREATE DATABASE IT_COMPANY1;
 
--- FIND THE TOTAL SALARY SEND ON EMPLOYEE EVERY MONTH
-select sum(salary) from employe;
+USE IT_COMPANY1;
 
--- COUNT IT DEPT EMPLOYEE
-select count(id) from employe where deptid = it;
+-- CREATE DEPT TABLE
+CREATE TABLE DEPT(
+    DEPTID INT NOT NULL PRIMARY KEY,
+    DEPTNAME VARCHAR(30) NOT NULL UNIQUE
+);
 
--- COUNT NON IT DEPART
-select count(id) from employe where deptid = 1001;
+-- CREATE EMPLOYEE TABLE
+CREATE TABLE EMPLOYEE(
+     EMPID INT AUTO_INCREMENT,
+     NAME VARCHAR(40) NOT NULL,
+     DEPTID INT NOT NULL,
+     SALARY INT UNSIGNED,
+     PRIMARY KEY(EMPID),
+     FOREIGN KEY (DEPTID) REFERENCES DEPT(DEPTID)
+);
 
--- UPDATE SALARY 5000 FOR all EMPLOYES  
-UPDATE employe set salary= salary + 5000;
+-- INSERT RECORDS IN DEPT TABLE
+INSERT INTO DEPT VALUES
+(1001,'IT'),
+(1002,'HR'),
+(1003,'SALES');
 
-set sql_safe_updates = 0;
+SELECT * FROM DEPT;
 
--- update 2000 for it employes
-UPDATE employe  set salary = salary + 2000
-where deptid = 1001;
+-- INSERT INTO EMPLOYEE
+INSERT INTO EMPLOYEE(NAME,DEPTID,SALARY)
+VALUES
+('RAM',1001,50000),
+('RAJU',1002,45000);
 
--- UPDATE RAM SALARY BY 3000
-update employe set salary = salary + 3000 where name = 'ram';
+SELECT * FROM EMPLOYEE;
 
--- DELETE 102 EMPLOYE FROM EMPLOY TABLE
-delete from employe 
-where empid = 102;
+INSERT INTO EMPLOYEE(NAME,DEPTID,SALARY)
+VALUES('SAM',1001,50000);
 
-select * from employe;
+INSERT INTO EMPLOYEE(NAME,DEPTID,SALARY)
+VALUES('SANJU',1002,50000);
 
--- find the employe details those name start with "s"
-select *from employe
-where name like 's%';
+INSERT INTO EMPLOYEE(NAME,DEPTID,SALARY)
+VALUES
+('SIVA',1001,55000),
+('GEETHU',1003,40000);
 
--- find the employe details those name ends with "i"
-select *from employe
-where name like '%i';
+SELECT * FROM EMPLOYEE;
 
--- find the employe details those name ends with "i"
-select *from employe
-where name like '%a%';
+DESC DEPT;
 
+-- SELECT IT EMPLOYEES
+SELECT * FROM EMPLOYEE
+WHERE DEPTID = 1001;
 
--- removeing duplicate values
+-- SELECT NON IT EMPLOYEES
+SELECT * FROM EMPLOYEE
+WHERE DEPTID <> 1001;
+
+-- SELECT HR AND SALES EMPLOYEES
+SELECT * FROM EMPLOYEE
+WHERE DEPTID IN (1002,1003);
+
+-- SALARY GREATER THAN 35000
+SELECT * FROM EMPLOYEE
+WHERE SALARY > 35000;
+
+-- SALARY LESS OR EQUAL 35000
+SELECT * FROM EMPLOYEE
+WHERE SALARY <= 35000;
+
+-- TOTAL EMPLOYEE COUNT
+SELECT COUNT(*) AS "TOTAL EMPLOYEES" FROM EMPLOYEE;
+
+-- TOTAL SALARY
+SELECT SUM(SALARY) AS "TOTAL SPEND" FROM EMPLOYEE;
+
+-- IT EMPLOYEE COUNT
+SELECT COUNT(*) AS "IT EMP COUNT"
+FROM EMPLOYEE
+WHERE DEPTID = 1001;
+
+-- NON IT EMPLOYEE COUNT
+SELECT COUNT(*) AS "NON IT EMP COUNT"
+FROM EMPLOYEE
+WHERE DEPTID <> 1001;

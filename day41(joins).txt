@@ -1,0 +1,10 @@
+Joins are used to get data from multiple tables
+There are two types of joins:
+    inner joins
+    outter joins    
+        left join 
+        right join
+        full join
+
+Inner join:
+    

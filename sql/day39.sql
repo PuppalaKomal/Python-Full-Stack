@@ -1,51 +1,45 @@
-use it_company;
--- FIND EMPLOYEE COUNT
-select count(id) from employe;
--- FIND SALES EMPLOYEE COUNT
-select deptid,count(*) as Count from employe
-where deptid = 1003;
+USE IT_COMPANY1;
+-- FIND  THE IT DEPT EMPLOYEE COUNT
+SELECT * FROM EMPLOYEE;
+SELECT * FROM DEPT;
+
+SELECT DEPTID, COUNT(*)AS "IT EMPLOYEE"FROM EMPLOYEE
+WHERE DEPTID=1002;
+
+-- FIND SALES DEPT EMPLOYEE COUNT
+SELECT  DEPTID,COUNT(*) AS "SALES DEPT "FROM DEPT
+WHERE DEPTID=1003;
 -- FIND HR DEPT EMPLOYEE COUNT
-select deptid,count(*) as Count from employe
-where deptid = 1002;
+SELECT COUNT(*) AS  "HR DEPT" FROM EMPLOYEE
+WHERE DEPTID=1002 OR DEPTID=1001;
+SELECT NAME,DEPTID,COUNT(*) AS COUNT FROM EMPLOYEE
+GROUP BY DEPTID;
+SELECT DEPTID,COUNT(*) AS COUNT ,SUM(SALARY)FROM EMPLOYEE
+GROUP BY DEPTID;
 
--- make group dept wise
-select name ,deptid,count(*) as Count from employe
-group by deptid;
-select * from employe ;
-
--- make total amount to be paid as salaries grp wise
-select deptid,count(*) as Count ,sum(salary) from employe
-group by deptid;
-select * from employe ;
-
--- find 1001 and 1002 depts employee count
-select deptid, count(*) as Count ,sum(salary)from employe
-where deptid in (1001, 1002)
-group by deptid;
-
--- select *from employe
-select count(id) from employe;
-select*from employe;
-
--- find max salary in each dept
-use it_company;
-SELECT deptid, MAX(salary) AS max_salary FROM employe
+SELECT * FROM EMPLOYEE;
+-- FIND MAXIMUM SALARY IN EACH DEPT
+SELECT deptid, MAX(salary) AS max_salary
+FROM employee
 GROUP BY deptid;
--- find min salary in each dept
-SELECT deptid, MIN(salary) AS min_salary FROM employe
+-- FIND MINIMUM SALARY IN EACH DEPT
+SELECT deptid, MIN(salary) AS min_salary
+FROM employee
 GROUP BY deptid;
--- find how much average salary company spend
-SELECT AVG(salary) AS avg_salary
-FROM employe;
--- return 1001 and 1002 depts min salary
-select deptid, min(salary) as min_salary from employe
-where deptid in (1001, 1002)
-group by deptid;
--- return all depts total employees
-SELECT deptid, COUNT(*) AS total_employees
-FROM employe
+-- FIND HOW MUCH AVERAGE SALARY COMPANY SPENDS ON EACH DEPY
+SELECT deptid, AVG(salary) AS avg_salary
+FROM employee
 GROUP BY deptid;
--- find each dept total salary 
-select deptid, sum(salary) as total_salary
-from employe
-group by deptid;
+-- RETURN 1001 AND 1002 DEPT'S MINIMUM SALARY
+SELECT deptid, MIN(salary) AS min_salary
+FROM employee
+WHERE deptid IN (1001,1002)
+GROUP BY deptid;
+-- RETURN ALL DEPT'S TOTAL_EMPLOYEE
+SELECT deptid, COUNT(*) AS total_employee
+FROM employee
+GROUP BY deptid;
+-- FIND EACH DEPT TOTAL SALARY
+SELECT deptid, SUM(salary) AS total_salary
+FROM employee
+GROUP BY deptid;
