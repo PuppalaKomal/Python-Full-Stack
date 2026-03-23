@@ -1,0 +1,6 @@
+-- Indexes
+-- types of indexes
+    -- 1. Single column Index
+    -- 2. Unique Index
+    -- 3. Primary Index
+    -- 4. Composite Index
