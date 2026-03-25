@@ -1,4 +1,4 @@
-from Database.connection import DatabaseConfig  
+from database.connection import DatabaseConfig  
 class Login:
     def __init__(self,account:int, password:str):
         self.account = account

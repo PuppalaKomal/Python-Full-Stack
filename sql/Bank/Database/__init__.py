@@ -1,2 +1,2 @@
-from Database.connection import DatabaseConfig  
-from Database import *
+from database.connection import DatabaseConfig
+from database.tables import CreateTables
